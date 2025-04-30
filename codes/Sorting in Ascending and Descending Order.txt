@@ -1,0 +1,21 @@
+#include <xc.h>
+#define _XTAL_FREQ 20000000
+
+void main(void) {
+    int arr[5] = {5, 2, 9, 1, 6}, temp;
+
+    // Ascending sort
+    for(int i=0; i<5; i++) {
+        for(int j=i+1; j<5; j++) {
+            if(arr[i] > arr[j]) {
+                temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+            }
+        }
+    }
+
+    // Descending can be done similarly by reversing the condition
+
+    while(1);
+}

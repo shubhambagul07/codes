@@ -1,0 +1,25 @@
+#include <xc.h>
+#define _XTAL_FREQ 20000000
+
+void __interrupt() ISR(void) {
+    if (TMR1IF) {
+        PORTBbits.RB0 = ~PORTBbits.RB0;  // Toggle buzzer pin
+        TMR1IF = 0;
+        TMR1H = 0x3C;  // Reload timer
+        TMR1L = 0xB0;
+    }
+}
+
+void main(void) {
+    TRISBbits.TRISB0 = 0;
+    PORTBbits.RB0 = 0;
+
+    T1CON = 0x31;  // Timer1 ON, 1:8 Prescale
+    TMR1H = 0x3C;
+    TMR1L = 0xB0;
+    TMR1IE = 1;
+    PEIE = 1;
+    GIE = 1;
+
+    while(1);
+}

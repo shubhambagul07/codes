@@ -1,0 +1,19 @@
+#include <xc.h>
+#define _XTAL_FREQ 20000000
+
+void __interrupt() ISR(void) {
+    if (INT0IF) {
+        LATBbits.LATB1 = 1;  // Turn on relay or LED
+        INT0IF = 0;
+    }
+}
+
+void main(void) {
+    TRISBbits.TRISB0 = 1; // INT0 as input
+    TRISBbits.TRISB1 = 0; // Output
+
+    INT0IE = 1;
+    GIE = 1;
+
+    while(1);
+}

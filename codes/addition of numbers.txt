@@ -1,0 +1,12 @@
+#include <xc.h>              // Include processor files
+#define _XTAL_FREQ 20000000  // Define oscillator frequency
+
+void main(void) {
+    int a = 0x0A;    // 10 in hex
+    int b = 0x02;    // 2 in hex
+    int sum = 0;     // Initialize sum to 0
+
+    sum = a + b;     // Perform addition
+
+    while(1);        // Infinite loop
+}

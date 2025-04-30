@@ -1,0 +1,11 @@
+#include <xc.h>
+#define _XTAL_FREQ 20000000
+
+void main(void) {
+    unsigned char source[5] = {1, 2, 3, 4, 5};
+    unsigned char destination[5];
+    for (int i = 0; i < 5; i++) {
+        destination[i] = source[i];  // Internal to internal memory transfer
+    }
+    while(1);
+}

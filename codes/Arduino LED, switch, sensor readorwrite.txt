@@ -1,0 +1,22 @@
+// Arduino Example
+int led = 13;
+int button = 2;
+int sensor = A0;
+
+void setup() {
+  pinMode(led, OUTPUT);
+  pinMode(button, INPUT);
+  Serial.begin(9600);
+}
+
+void loop() {
+  if (digitalRead(button)) {
+    digitalWrite(led, HIGH);
+  } else {
+    digitalWrite(led, LOW);
+  }
+
+  int value = analogRead(sensor);
+  Serial.println(value);
+  delay(500);
+}

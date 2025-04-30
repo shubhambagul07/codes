@@ -1,0 +1,22 @@
+#include <xc.h>
+#define _XTAL_FREQ 20000000
+
+void adc_init() {
+    ADCON0 = 0x01; // Channel 0
+    ADCON1 = 0x0E; // AN0 analog, others digital
+}
+
+unsigned int adc_read() {
+    GO_nDONE = 1;
+    while(GO_nDONE);
+    return ((ADRESH << 8) + ADRESL);
+}
+
+void main(void) {
+    unsigned int temp;
+    adc_init();
+    while(1) {
+        temp = adc_read();
+        __delay_ms(500);
+    }
+}
