@@ -1,0 +1,14 @@
+#include <xc.h>
+#define _XTAL_FREQ 20000000
+
+void main(void) {
+    TRISCbits.TRISC2 = 0; // CCP1 as output
+
+    PR2 = 155;           // Set PWM period
+    CCP1CON = 0x0C;      // PWM mode
+    T2CON = 0x04;        // Turn on Timer2
+
+    CCPR1L = 62;         // Set duty cycle (~50%)
+
+    while(1);
+}

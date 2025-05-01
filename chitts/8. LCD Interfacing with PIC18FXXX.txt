@@ -1,0 +1,17 @@
+#include <xc.h>
+#define _XTAL_FREQ 20000000
+
+void lcd_cmd(unsigned char);
+void lcd_data(unsigned char);
+void lcd_init();
+
+void main(void) {
+    TRISD = 0x00;   // PORTD as output
+    lcd_init();
+    lcd_cmd(0x80);  // Move cursor to line 1
+    lcd_data('H');
+    lcd_data('i');
+    while(1);
+}
+
+// You need to define lcd_cmd(), lcd_data(), and lcd_init() depending on 4-bit or 8-bit mode.

@@ -1,0 +1,12 @@
+#include <xc.h>
+#define _XTAL_FREQ 20000000
+
+void main(void) {
+    unsigned char var1 = 0x55;
+    unsigned char *ptr1 = &var1;
+    unsigned char var2;
+
+    var2 = *ptr1; // Transfer using pointer
+
+    while(1);
+}

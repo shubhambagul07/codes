@@ -1,0 +1,19 @@
+#include <xc.h>
+#define _XTAL_FREQ 20000000
+
+void main(void) {
+    int arr[] = {24, 3, 27, 45, 18};
+    int i, j, temp;
+
+    for(i = 0; i < 5; i++) {
+        for(j = i + 1; j < 5; j++) {
+            if(arr[i] < arr[j]) {
+                temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+            }
+        }
+    }
+
+    while(1);
+}

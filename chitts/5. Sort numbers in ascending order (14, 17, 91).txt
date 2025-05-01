@@ -1,0 +1,21 @@
+#include <xc.h>
+#define _XTAL_FREQ 20000000
+
+void main(void) {
+    int arr[] = {14, 17, 91};
+    int i, j, temp;
+
+    for(i = 0; i < 3; i++) {
+        for(j = i+1; j < 3; j++) {
+            if(arr[i] > arr[j]) {
+                temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+            }
+        }
+    }
+
+    PORTD = arr[0];  // Display smallest value on PORTD
+    while(1);
+}
+

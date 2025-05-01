@@ -1,0 +1,14 @@
+#include <xc.h>
+#define _XTAL_FREQ 20000000
+
+void main(void) {
+    int src[] = {11, 22, 33, 44, 55};
+    int dest[5];
+    int i;
+
+    for(i = 0; i < 5; i++) {
+        dest[i] = src[i];
+    }
+
+    while(1);
+}

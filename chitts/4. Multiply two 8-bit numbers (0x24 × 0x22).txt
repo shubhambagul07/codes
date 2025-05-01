@@ -1,0 +1,11 @@
+#include <xc.h>
+#define _XTAL_FREQ 20000000
+
+void main(void) {
+    unsigned char num1 = 0x24, num2 = 0x22;
+    unsigned int result = 0;
+
+    result = num1 * num2;
+
+    while(1);
+}
