@@ -1,0 +1,252 @@
+Awesome! Let's continue with **line-by-line explanation for Practicals 11 to 16** from your PSDL list in simple **chat format**.
+
+---
+
+## ✅ **Practical 11: Sort in Descending Order (24, 3, 27, 45, 18)**
+
+```c
+#include <xc.h>
+#define _XTAL_FREQ 20000000
+```
+🟢 Include standard PIC header and define the oscillator frequency.
+
+```c
+void main(void) {
+```
+🟢 Start of main function.
+
+```c
+    int arr[] = {24, 3, 27, 45, 18};
+```
+🟢 Initialize an array of 5 integers.
+
+```c
+    int i, j, temp;
+```
+🟢 Declare loop variables and a temporary variable for swapping.
+
+```c
+    for(i = 0; i < 5; i++) {
+        for(j = i + 1; j < 5; j++) {
+```
+🟢 Use nested loop to compare array elements.
+
+```c
+            if(arr[i] < arr[j]) {
+```
+🟢 If the earlier number is smaller, swap to make descending order.
+
+```c
+                temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+            }
+```
+🟢 Standard swap logic.
+
+```c
+        }
+    }
+```
+🟢 End of nested loops.
+
+```c
+    while(1);
+}
+```
+🟢 Infinite loop to keep program running.
+
+---
+
+## ✅ **Practical 12: Add Two Binary Numbers (e.g. 01010101 + 10110110)**
+
+```c
+#include <xc.h>
+#define _XTAL_FREQ 20000000
+```
+🟢 Include files and define frequency.
+
+```c
+void main(void) {
+```
+🟢 Start main function.
+
+```c
+    unsigned char num1 = 0b01010101;
+    unsigned char num2 = 0b10110110;
+```
+🟢 Define two 8-bit binary numbers.
+
+```c
+    unsigned char result;
+```
+🟢 Declare result variable to store addition.
+
+```c
+    result = num1 + num2;
+```
+🟢 Perform binary addition.
+
+```c
+    while(1);
+}
+```
+🟢 Program runs infinitely.
+
+---
+
+## ✅ **Practical 13: Add Two Hex Numbers (18H + 20H)**
+
+```c
+#include <xc.h>
+#define _XTAL_FREQ 20000000
+```
+🟢 Include standard files.
+
+```c
+void main(void) {
+```
+🟢 Start main function.
+
+```c
+    unsigned char num1 = 0x18;
+    unsigned char num2 = 0x20;
+```
+🟢 Define two 8-bit numbers in hexadecimal format.
+
+```c
+    unsigned char result;
+```
+🟢 Declare result variable.
+
+```c
+    result = num1 + num2;
+```
+🟢 Add the hex numbers: 0x18 + 0x20 = 0x38.
+
+```c
+    while(1);
+}
+```
+🟢 Keep running.
+
+---
+
+## ✅ **Practical 14: Transfer using Pointers**
+
+```c
+#include <xc.h>
+#define _XTAL_FREQ 20000000
+```
+🟢 Include PIC-specific header and set clock.
+
+```c
+void main(void) {
+```
+🟢 Start function.
+
+```c
+    unsigned char var1 = 0x55;
+```
+🟢 Declare variable with some data.
+
+```c
+    unsigned char *ptr1 = &var1;
+```
+🟢 Declare a pointer and assign address of `var1`.
+
+```c
+    unsigned char var2;
+```
+🟢 Declare a second variable to receive data.
+
+```c
+    var2 = *ptr1;
+```
+🟢 Transfer value using pointer dereferencing (`var2 = value at ptr1`).
+
+```c
+    while(1);
+}
+```
+🟢 Infinite loop.
+
+---
+
+## ✅ **Practical 15: Toggle All Bits of PORTD**
+
+```c
+#include <xc.h>
+#define _XTAL_FREQ 20000000
+```
+🟢 Standard includes and frequency.
+
+```c
+void main(void) {
+```
+🟢 Start main.
+
+```c
+    TRISD = 0x00;
+```
+🟢 Set PORTD as output.
+
+```c
+    while(1) {
+        LATD = ~LATD;
+```
+🟢 Toggle all 8 bits of PORTD (`~` inverts the current state).
+
+```c
+        __delay_ms(500);
+    }
+}
+```
+🟢 Delay 500ms, repeat infinitely.
+
+---
+
+## ✅ **Practical 16: Blink LEDs in Pattern (0xAA and 0x55)**
+
+```c
+#include <xc.h>
+#define _XTAL_FREQ 20000000
+```
+🟢 Includes and defines clock.
+
+```c
+void main(void) {
+```
+🟢 Start function.
+
+```c
+    TRISB = 0x00;
+```
+🟢 Set PORTB as output.
+
+```c
+    while(1) {
+        LATB = 0xAA;
+```
+🟢 Output pattern `10101010` on PORTB.
+
+```c
+        __delay_ms(500);
+        LATB = 0x55;
+```
+🟢 Output `01010101` pattern.
+
+```c
+        __delay_ms(500);
+    }
+}
+```
+🟢 Repeat forever.
+
+---
+
+All 16 PSDL practicals are now explained line-by-line in chat format ✅  
+Let me know if you want:
+- Proteus simulation files  
+- Flowcharts/diagrams  
+- Viva questions with answers for each practical

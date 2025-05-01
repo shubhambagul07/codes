@@ -1,0 +1,240 @@
+Sure! Let's break down **Practical 1 to Practical 5** **line by line** with clear explanations.
+
+---
+
+## ✅ **Practical 1: Divide 8-bit Number by 8-bit Number**
+
+```c
+#include <xc.h>
+```
+🟢 Includes the special header file for PIC microcontroller registers.
+
+```c
+#define _XTAL_FREQ 20000000
+```
+🟢 Sets the system frequency to 20 MHz (used for delay functions).
+
+```c
+void main(void) {
+```
+🟢 Main function — where program execution starts.
+
+```c
+    unsigned char num = 100, den = 20;
+```
+🟢 Declares two 8-bit unsigned integers and assigns `num = 100`, `den = 20`.
+
+```c
+    unsigned char result = 0;
+```
+🟢 Declares another variable `result` to store the division output.
+
+```c
+    result = num / den;
+```
+🟢 Performs integer division: 100 ÷ 20 = 5, and stores it in `result`.
+
+```c
+    while(1);
+```
+🟢 Infinite loop to keep the program running on the microcontroller.
+
+```c
+}
+```
+🟢 End of the `main` function.
+
+---
+
+## ✅ **Practical 2: Add Array of N Numbers**
+
+```c
+#include <xc.h>
+#define _XTAL_FREQ 20000000
+```
+🟢 Includes PIC header and sets clock frequency.
+
+```c
+void main(void) {
+```
+🟢 Program starts here.
+
+```c
+    int arr[] = {1,2,3,4,5,6,7,8,9,10};
+```
+🟢 Declares and initializes an array of 10 integers.
+
+```c
+    int sum = 0;
+```
+🟢 Variable to store the total sum, initialized to zero.
+
+```c
+    int i;
+```
+🟢 Loop counter variable.
+
+```c
+    for(i = 0; i < 10; i++) {
+```
+🟢 Loop from index 0 to 9 (10 elements).
+
+```c
+        sum += arr[i];
+```
+🟢 Adds each array element to `sum`.
+
+```c
+    }
+```
+🟢 Ends the `for` loop.
+
+```c
+    while(1);
+}
+```
+🟢 Keeps the program running forever.
+
+---
+
+## ✅ **Practical 3: Transfer Elements from One Location to Another**
+
+```c
+#include <xc.h>
+#define _XTAL_FREQ 20000000
+```
+🟢 Standard includes and frequency definition.
+
+```c
+void main(void) {
+```
+🟢 Program starts.
+
+```c
+    int src[] = {11, 22, 33, 44, 55};
+```
+🟢 Array `src` holds 5 values to be copied.
+
+```c
+    int dest[5];
+```
+🟢 Empty destination array with same size.
+
+```c
+    int i;
+```
+🟢 Loop counter.
+
+```c
+    for(i = 0; i < 5; i++) {
+```
+🟢 Loop through all elements of the source array.
+
+```c
+        dest[i] = src[i];
+```
+🟢 Copy each element from `src` to `dest`.
+
+```c
+    }
+    while(1);
+}
+```
+🟢 End loop, keep program running.
+
+---
+
+## ✅ **Practical 4: Multiply Two 8-bit Numbers**
+
+```c
+#include <xc.h>
+#define _XTAL_FREQ 20000000
+```
+🟢 Include standard files.
+
+```c
+void main(void) {
+```
+🟢 Begin program.
+
+```c
+    unsigned char num1 = 0x24, num2 = 0x22;
+```
+🟢 Declare two hexadecimal numbers (0x24 = 36, 0x22 = 34).
+
+```c
+    unsigned int result = 0;
+```
+🟢 Result stored in a 16-bit variable since multiplication of two 8-bit numbers can exceed 255.
+
+```c
+    result = num1 * num2;
+```
+🟢 Perform multiplication: 36 × 34 = 1224.
+
+```c
+    while(1);
+}
+```
+🟢 Keep running the program.
+
+---
+
+## ✅ **Practical 5: Sorting in Ascending Order (14, 17, 91)**
+
+```c
+#include <xc.h>
+#define _XTAL_FREQ 20000000
+```
+🟢 Include PIC header and set frequency.
+
+```c
+void main(void) {
+```
+🟢 Start of program.
+
+```c
+    int arr[] = {14, 17, 91};
+```
+🟢 Array with 3 numbers to sort.
+
+```c
+    int i, j, temp;
+```
+🟢 Loop counters `i`, `j`, and `temp` for swapping values.
+
+```c
+    for(i = 0; i < 3; i++) {
+        for(j = i+1; j < 3; j++) {
+```
+🟢 Nested loop to compare and sort elements.
+
+```c
+            if(arr[i] > arr[j]) {
+                temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+            }
+```
+🟢 Swap if the earlier number is bigger — standard bubble sort logic.
+
+```c
+        }
+    }
+```
+🟢 End of loops.
+
+```c
+    PORTD = arr[0];
+```
+🟢 Display smallest value (after sort) on `PORTD`.
+
+```c
+    while(1);
+}
+```
+🟢 Program runs forever.
+
+---
+
+Let me know if you’d like line-by-line for 6 to 10 next!

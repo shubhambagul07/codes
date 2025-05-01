@@ -1,0 +1,247 @@
+Perfect! Let’s now go through **PSDL Practicals 6 to 10**, explaining each line in **chat format**.
+
+---
+
+## ✅ **Practical 6: LED Blinking with Delay**
+
+```c
+#include <xc.h>
+```
+🟢 Includes the special header file to access microcontroller registers.
+
+```c
+#define _XTAL_FREQ 20000000
+```
+🟢 Defines the crystal oscillator frequency as 20 MHz — required for delay functions.
+
+```c
+void main(void) {
+```
+🟢 Start of the main function.
+
+```c
+    TRISB = 0x00;
+```
+🟢 Sets PORTB as output (`TRISB = 0` means all 8 pins of PORTB are outputs).
+
+```c
+    LATB = 0x00;
+```
+🟢 Clears PORTB (turns all LEDs OFF).
+
+```c
+    while(1) {
+```
+🟢 Infinite loop — keeps blinking LEDs continuously.
+
+```c
+        LATB = 0xFF;
+```
+🟢 Turns ON all LEDs connected to PORTB (`0xFF` = 11111111).
+
+```c
+        __delay_ms(500);
+```
+🟢 Waits for 500 milliseconds.
+
+```c
+        LATB = 0x00;
+```
+🟢 Turns OFF all LEDs.
+
+```c
+        __delay_ms(500);
+```
+🟢 Waits for 500 milliseconds.
+
+```c
+    }
+}
+```
+🟢 Ends the infinite loop and main function.
+
+---
+
+## ✅ **Practical 7: Timer-Based ISR for Buzzer ON/OFF**
+
+```c
+#include <xc.h>
+#define _XTAL_FREQ 20000000
+```
+🟢 Include header and define clock speed.
+
+```c
+void __interrupt() isr(void) {
+```
+🟢 This is the interrupt service routine (ISR). It executes when an interrupt occurs.
+
+```c
+    if (TMR1IF) {
+```
+🟢 Checks if Timer1 overflow interrupt flag is set.
+
+```c
+        PORTBbits.RB0 = ~PORTBbits.RB0;
+```
+🟢 Toggles RB0 pin (used for buzzer ON/OFF).
+
+```c
+        TMR1IF = 0;
+```
+🟢 Clears the Timer1 interrupt flag.
+
+```c
+        TMR1H = 0x3C; TMR1L = 0xB0;
+```
+🟢 Reloads Timer1 values for another 500ms delay.
+
+```c
+    }
+}
+```
+🟢 Ends the ISR function.
+
+```c
+void main(void) {
+```
+🟢 Main function starts.
+
+```c
+    TRISBbits.TRISB0 = 0;
+```
+🟢 Sets RB0 pin as output (for buzzer).
+
+```c
+    PORTBbits.RB0 = 0;
+```
+🟢 Initially turn buzzer OFF.
+
+```c
+    T1CON = 0x31;
+```
+🟢 Timer1 ON, Prescaler 1:8, internal clock.
+
+```c
+    TMR1H = 0x3C; TMR1L = 0xB0;
+```
+🟢 Preloads timer to overflow after ~500ms (calculated for 20 MHz).
+
+```c
+    TMR1IE = 1; PEIE = 1; GIE = 1;
+```
+🟢 Enable Timer1 interrupt, peripheral interrupt, and global interrupt.
+
+```c
+    while(1);
+}
+```
+🟢 Keeps microcontroller running infinitely — rest is handled in ISR.
+
+---
+
+## ✅ **Practical 8: LCD Interfacing (Basic Hello Display)**
+
+```c
+#include <xc.h>
+#define _XTAL_FREQ 20000000
+```
+🟢 Standard header and frequency.
+
+```c
+void lcd_cmd(unsigned char);
+void lcd_data(unsigned char);
+void lcd_init();
+```
+🟢 Function declarations for LCD control (defined elsewhere).
+
+```c
+void main(void) {
+```
+🟢 Start of main program.
+
+```c
+    TRISD = 0x00;
+```
+🟢 Set PORTD as output (connected to LCD data pins).
+
+```c
+    lcd_init();
+```
+🟢 Initialize LCD (clear screen, 2-line mode, etc.).
+
+```c
+    lcd_cmd(0x80);
+```
+🟢 Move LCD cursor to first row, first column.
+
+```c
+    lcd_data('H');
+    lcd_data('i');
+```
+🟢 Display characters `'H'` and `'i'` on the LCD.
+
+```c
+    while(1);
+}
+```
+🟢 Keep program running.
+
+> ⚠️ Note: You’ll need to implement `lcd_init()`, `lcd_cmd()`, and `lcd_data()` based on your hardware (4-bit or 8-bit mode).
+
+---
+
+## ✅ **Practical 9: PWM for Servo/DC Motor**
+
+```c
+#include <xc.h>
+#define _XTAL_FREQ 20000000
+```
+🟢 Includes header and sets oscillator frequency.
+
+```c
+void main(void) {
+```
+🟢 Start of main function.
+
+```c
+    TRISCbits.TRISC2 = 0;
+```
+🟢 CCP1 output pin (RC2) set as output.
+
+```c
+    PR2 = 155;
+```
+🟢 Set PWM period (depends on desired frequency and clock speed).
+
+```c
+    CCP1CON = 0x0C;
+```
+🟢 Configure CCP1 module in PWM mode.
+
+```c
+    T2CON = 0x04;
+```
+🟢 Turn ON Timer2 (required for PWM).
+
+```c
+    CCPR1L = 62;
+```
+🟢 Set duty cycle (~50%).
+
+```c
+    while(1);
+}
+```
+🟢 Run infinitely with the PWM signal output.
+
+---
+
+## ✅ **Practical 10: LED Blinking with Delay (Same as Practical 6)**
+
+This is a duplicate in your list, so the same code and explanation as **Practical 6** applies here.
+
+---
+
+
+
+
